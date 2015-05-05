@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project name="build-common" default="build" basedir=".">
+	<target name="build">
+		<tstamp>
+			<format property="timestamp" pattern="yyyy-MM-dd HH:mm:ss Z" />
+		</tstamp>
+		<copy file="src/plugin.yml" todir="bin" overwrite="true" failonerror="false" />
+		<replace dir="bin" token="@VERSION@" value="${timestamp} | ${user.name}">
+			<include name="**/plugin.yml" />
+		</replace>
+		<jar jarfile="bin/Octopus.jar" level="1">
+			<fileset dir="bin" />
+		</jar>
+		<mkdir dir="runtime/plugins" />
+		<delete>
+			<fileset file="runtime/plugins/*.jar" />
+		</delete>
+		<copy file="bin/Octopus.jar" todir="runtime/plugins" />
+		<delete>
+			<fileset file="bin/*.jar" />
+		</delete>
+	</target>
+</project>

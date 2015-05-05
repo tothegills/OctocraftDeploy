@@ -1,0 +1,5 @@
+name: OctopusDeploy
+main: com.octopusdeploy.Plugin
+version: @VERSION@
+website: http://octopusdeploy.com
+author: Octopus Deploy
